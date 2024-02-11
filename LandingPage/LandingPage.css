@@ -116,6 +116,10 @@ button:hover{
     border-radius: 10%;  
 }
 
+.first-div .Image:hover{
+    background: peru;
+}
+
 footer {
     display: flex;
     align-items: center;
