@@ -190,3 +190,6 @@ function clearCart(){
     updateTotal();
     localStorage.removeItem("cartItems");
 }
+
+
+

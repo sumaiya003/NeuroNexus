@@ -20,13 +20,13 @@ app.listen(port,()=> {
     console.log(`Server listening on port ${port}`);
 });
 
-// app.get('/', (req,res)=>{
-//     res.sendFile('index.html',{root:'public/JS' });
-// });
+app.get('/', (req,res)=>{
+    res.sendFile('index.html',{root:'public/JS' });
+});
 
-app.get('/',(req, res)=>{
-    res.sendFile('login.ejs', {root:'public/JS'});
-})
+// app.get('/',(req, res)=>{
+//     res.sendFile('login.ejs', {root:'public/JS'});
+// })
 
 app.get('/successPayment', (req,res)=>{
     res.sendFile('successPayment.html',{root:'public/JS' });
