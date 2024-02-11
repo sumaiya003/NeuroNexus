@@ -21,6 +21,6 @@ const loginSchema= new mongoose.Schema({
     }
 });
 
-const collect =new mongoose.model("auth", loginSchema);
+const collect =new mongoose.model("auths", loginSchema);
 
 export default collect;

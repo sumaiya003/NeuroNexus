@@ -5,10 +5,33 @@
 }
 
 body{
+
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    background: linear-gradient(
+        to right,
+        #B59A7D 0%,
+        #B59A7D 50%,
+        white 50%,
+        white 100%
+
+    );
+
+}
+
+#logo{
+    font-size: 70px;
+    font-family: 'Poppins', sans-serif;
+    padding-left: 20%;
+}
+
+#p1{
+    padding-left: 0%;
+    align-items: start;
+    font-size: 20px;
+
 }
 
 h2{
@@ -17,7 +40,8 @@ h2{
 }
 
 .form-container{
-    width: 300px;
+    height: 400px;
+    width: 350px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid black;
@@ -46,7 +70,7 @@ h2{
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: plum;
+    background-color: #B59A7D;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -54,10 +78,12 @@ h2{
 }
 
 .submit-btn:hover{
-    background-color: violet;
+    background-color: burlywood;
 }
 
 
 p{
-    margin-top: 15px; ;
+    margin-top: 15px; 
+    display: flex;
+    justify-content: center;
 }

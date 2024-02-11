@@ -1,7 +1,6 @@
 import express from "express";
 import dotnev from "dotenv";
 import stripe from "stripe";
-import authRoutes from "./router/authRoutes.js";
 
 ///Users/sumaiyaparveen/Desktop/Backend-Ecommerce/router/authRoutes.js
 dotnev.config();
@@ -15,7 +14,7 @@ app.use(express.json());
 let stripeGateway = stripe(process.env.stripe_api);
 let DOMAIN = process.env.DOMAIN
 
-app.use('/auth', authRoutes);
+// app.use('/auth', authRoutes);
 
 app.listen(port,()=> {
     console.log(`Server listening on port ${port}`);
@@ -41,7 +40,7 @@ app.post('/stripe-checkout', async(req, res)=>{
         console.log("unitAmount:" , unitAmount);
         return{
             price_data : {
-                currency: 'usd',
+                currency: 'INR',
                 product_data: {
                     name: item.title,
                     images:[item.productImgs]

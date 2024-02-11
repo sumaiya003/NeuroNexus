@@ -115,12 +115,12 @@ function updateTotal(){
         var box = cartBox[i];
         var priceOfElement = box.getElementsByClassName("cart-price")[0];
         var quantityOfElement = box.getElementsByClassName("cart-quantity")[0];
-        var price = parseFloat(priceOfElement.innerText.replace("$",""));
+        var price = parseFloat(priceOfElement.innerText.replace("Rs",""));
         var quantity = quantityOfElement.value;
         total = total + (price * quantity);
     }
     total = Math.round(total*100)/100;
-    document.getElementsByClassName("total-price")[0].innerText = "$" + total;
+    document.getElementsByClassName("total-price")[0].innerText = "Rs" + total;
     localStorage.setItem("cartTotal", total); 
 }
 
@@ -164,7 +164,7 @@ function loadCartItems(){
     }
     var cartTotal = localStorage.getItem('cartTotal');
     if(cartTotal){
-        document.getElementsByClassName('total-price')[0].innerText = "$" + cartTotal;
+        document.getElementsByClassName('total-price')[0].innerText = "Rs" + cartTotal;
     }
     updateCartIcon();
 }
