@@ -31,5 +31,7 @@ step 3- open VS code editor
 step 4- open the project 
 step 5- run command - nodemon public/src/main.js
 
+Card number During payment - 4242 4242 4242 4242
+
 
 
