@@ -6,14 +6,19 @@ import { name } from "ejs";
 import dotnev from "dotenv";
 import stripe from "stripe";
 
+dotnev.config();
+
 const app = express();
 app.use(express.json());// converting to json format
 app.use(express.urlencoded({extended: false}));
 app.set("view engine", "ejs");
 app.use(express.static("public"));// static files
-dotnev.config();
 
 const port = 3000;
+
+// stripe
+let stripeGateway = stripe(process.env.stripe_api);
+let DOMAIN = process.env.DOMAIN
 
 
 app.listen(port, ()=>{
@@ -22,6 +27,7 @@ app.listen(port, ()=>{
 
 app.get("/", (req,res)=>{
     res.render("login"); 
+    // res.render("index");
 }); 
 
 app.get("/signup", (req,res)=>{
@@ -48,6 +54,7 @@ app.post("/signup", async(req, res)=> {
 
     const userdata =await collect.insertMany(data);
     console.log(userdata);
+    res.render("index");
     }
 });
 
@@ -64,7 +71,6 @@ app.post("/login", async(req, res) =>{
         }
         const matchPassword = await bcrypt.compare(req.body.password, check.password);
         if(matchPassword){
-            // res.render("home");
             res.render("index");
             // here send index.html file
         }
@@ -76,31 +82,13 @@ app.post("/login", async(req, res) =>{
     }
 });
 
-///Users/sumaiyaparveen/Desktop/Backend-Ecommerce/router/authRoutes.js
-
-// stripe
-let stripeGateway = stripe(process.env.stripe_api);
-let DOMAIN = process.env.DOMAIN
-
-// app.use('/auth', authRoutes);
-
-
-// app.get('/', (req,res)=>{
-//     res.sendFile('index.html',{root:'public/JS' });
-// });
-
-// app.get('/',(req, res)=>{
-//     res.sendFile('login.ejs', {root:'public/JS'});
-// })
-
 app.get('/successPayment', (req,res)=>{
-    res.sendFile('successPayment.html',{root:'public/JS' });
+    res.sendFile('successPayment.html',{root:'public/JS' })
 });
 
 app.get('/failPayment ', (req,res)=>{
-    res.sendFile('failPayment.html',{root:'public/JS' });
+    res.sendFile('failPayment.html',{root:'public/JS' })
 });
-
 
 app.post('/stripe-checkout', async(req, res)=>{
     const lineItems = req.body.items.map((item) => {
